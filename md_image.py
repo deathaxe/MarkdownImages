@@ -2,7 +2,6 @@ import sublime
 import sublime_plugin
 from collections import defaultdict
 import struct
-import imghdr
 import base64
 import urllib.request
 import urllib.parse
@@ -11,6 +10,8 @@ import os.path
 import subprocess
 import sys
 import re
+
+from .vendor import imghdr
 
 
 DEBUG = False
