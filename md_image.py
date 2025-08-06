@@ -58,10 +58,12 @@ class MarkdownImagesPlugin(sublime_plugin.EventListener):
         ImageHandler.on_close(view)
 
     def _should_run_for_extension(self, settings, view):
-        extensions = settings.get('extensions')
-        fn = view.file_name()
-        _, ext = os.path.splitext(fn)
+        file_name = view.file_name()
+        if not file_name:
+            return False
+        _, ext = os.path.splitext(file_name)
         # extensions can be either a list or single string
+        extensions = settings.get('extensions')
         if isinstance(extensions, str):
             return ext == extensions
         return ext in extensions
